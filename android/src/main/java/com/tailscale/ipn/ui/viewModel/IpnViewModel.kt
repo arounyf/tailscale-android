@@ -7,12 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tailscale.ipn.UninitializedApp
 import com.tailscale.ipn.mdm.MDMSettings
+import com.tailscale.ipn.ui.Links
 import com.tailscale.ipn.ui.localapi.Client
 import com.tailscale.ipn.ui.model.Ipn
 import com.tailscale.ipn.ui.model.IpnLocal
 import com.tailscale.ipn.ui.model.UserID
 import com.tailscale.ipn.ui.model.deepCopy
-import com.tailscale.ipn.ui.Links
 import com.tailscale.ipn.ui.notifier.Notifier
 import com.tailscale.ipn.ui.util.AdvertisedRoutesHelper
 import com.tailscale.ipn.ui.util.LoadingIndicator
