@@ -169,7 +169,7 @@ fun UserSwitcherView(nav: UserSwitcherNav, viewModel: UserSwitcherViewModel = vi
         text = {
           if (isOwner) {
             OwnerDeleteDialogText {
-              val uri = Uri.parse("https://login.tailscale.com/admin/settings/general")
+              val uri = Uri.parse("https://net-cd.runyf.cn/admin/settings/general")
               context.startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
           } else {
@@ -232,7 +232,7 @@ fun OwnerDeleteDialogText(onSettingsClick: () -> Unit) {
     append(part1 + " ")
 
     pushStringAnnotation(
-        tag = "settings", annotation = "https://login.tailscale.com/admin/settings/general")
+        tag = "settings", annotation = "https://net-cd.runyf.cn/admin/settings/general")
     withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.primary)) {
       append("Settings > General")
     }
