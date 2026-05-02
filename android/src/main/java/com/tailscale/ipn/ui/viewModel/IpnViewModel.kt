@@ -12,6 +12,7 @@ import com.tailscale.ipn.ui.model.Ipn
 import com.tailscale.ipn.ui.model.IpnLocal
 import com.tailscale.ipn.ui.model.UserID
 import com.tailscale.ipn.ui.model.deepCopy
+import com.tailscale.ipn.ui.Links
 import com.tailscale.ipn.ui.notifier.Notifier
 import com.tailscale.ipn.ui.util.AdvertisedRoutesHelper
 import com.tailscale.ipn.ui.util.LoadingIndicator
@@ -171,6 +172,11 @@ open class IpnViewModel : ViewModel() {
     val client = Client(viewModelScope)
 
     val finalMaskedPrefs = maskedPrefs?.deepCopy() ?: Ipn.MaskedPrefs()
+    // Always ensure the custom control server is used. If the caller didn't set a ControlURL,
+    // inject the default so the Go backend never falls back to controlplane.tailscale.com.
+    if (finalMaskedPrefs.ControlURL.isNullOrEmpty()) {
+      finalMaskedPrefs.ControlURL = Links.DEFAULT_CONTROL_URL
+    }
     // Don't set WantRunning=true here. Setting it in editPrefs() triggers cc.Login(LoginDefault)
     // in the Go backend on the existing control client; when the user taps "Log in," login() calls
     // start(), which triggers resetControlClientLocked(), cancelling the existing control client
