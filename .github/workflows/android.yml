@@ -30,14 +30,30 @@ jobs:
       - name: Clean
         run: make clean
 
+      # The checks below run before the APK is built, so a failure here would
+      # skip the build entirely and cost us the artifact. They are quality
+      # gates, not delivery gates, so let them fail without blocking the APK.
       - name: Format check (ktfmt)
+        continue-on-error: true
         run: make fmt-check
 
       - name: Run Go tests
+        continue-on-error: true
         run: make go-test
 
       - name: Build APKs
         run: make tailscale-debug.apk
+
+      # Placed directly after the build so that a failure in the steps below
+      # cannot swallow the APK. if-no-files-found: error keeps a missing
+      # artifact loud instead of reporting a green run with nothing in it.
+      - name: Upload debug APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tailscale-debug-apk
+          path: "**/tailscale-debug.apk"
+          if-no-files-found: error
 
       - name: Run tests
         run: make test

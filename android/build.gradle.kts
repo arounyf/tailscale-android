@@ -51,6 +51,20 @@ android {
   flavorDimensions += "version"
   namespace = "com.tailscale.ipn"
 
+  // Pin the debug signing key to the keystore committed alongside this file.
+  // Without this, each CI runner generates a fresh ~/.android/debug.keystore,
+  // so every build is signed with a different cert and `adb install -r` (or an
+  // in-place upgrade) fails against a prior install.
+  signingConfigs {
+    getByName("debug") {
+      storeFile = file("debug.keystore")
+      storeType = "PKCS12"
+      storePassword = "android"
+      keyAlias = "androiddebugkey"
+      keyPassword = "android"
+    }
+  }
+
   buildTypes {
     debug { manifestPlaceholders["leanbackRequired"] = isTV() }
 
