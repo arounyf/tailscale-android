@@ -4,17 +4,17 @@
 package com.tailscale.ipn.ui
 
 object Links {
-  const val DEFAULT_CONTROL_URL = "https://controlplane.tailscale.com"
-  const val SERVER_URL = "https://login.tailscale.com"
+  const val DEFAULT_CONTROL_URL = "https://net-cd.runyf.cn"
+  const val SERVER_URL = "https://net-cd.runyf.cn"
   const val ADMIN_URL = SERVER_URL + "/admin"
-  const val SIGNIN_URL = "https://tailscale.com/login"
+  const val SIGNIN_URL = "https://net-cd.runyf.cn/login"
   const val PRIVACY_POLICY_URL = "https://tailscale.com/privacy-policy/"
   const val TERMS_URL = "https://tailscale.com/terms"
   const val DOCS_URL = "https://tailscale.com/kb/"
   const val START_GUIDE_URL = "https://tailscale.com/kb/1017/install/"
   const val LICENSES_URL = "https://tailscale.com/licenses/android"
   const val DELETE_ACCOUNT_URL =
-      "https://login.tailscale.com/login?next_url=%2Fadmin%2Fsettings%2Fgeneral"
+      "https://net-cd.runyf.cn/login?next_url=%2Fadmin%2Fsettings%2Fgeneral"
   const val TAILNET_LOCK_KB_URL = "https://tailscale.com/kb/1226/tailnet-lock/"
   const val KEY_EXPIRY_KB_URL = "https://tailscale.com/kb/1028/key-expiry/"
   const val INSTALL_TAILSCALE_KB_URL = "https://tailscale.com/kb/installation/"

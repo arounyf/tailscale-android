@@ -228,7 +228,7 @@ fun OwnerDeleteDialogText() {
   val annotatedText = buildAnnotatedString {
     append(part1 + " ")
 
-    pushLink(LinkAnnotation.Url("https://login.tailscale.com/admin/settings/general"))
+    pushLink(LinkAnnotation.Url("https://net-cd.runyf.cn/admin/settings/general"))
     withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.primary)) {
       append("Settings > General")
     }
